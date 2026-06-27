@@ -65,19 +65,31 @@ function tick(){
 
 }
 
+function unlockAudio() {
+    alarmSound.play().then(() => {
+        alarmSound.pause();
+        alarmSound.currentTime = 0;
+    }).catch(()=>{});
+
+    audio.play().then(() => {
+        audio.pause();
+        audio.currentTime = 0;
+    }).catch(()=>{});
+}
+
 
 /* -----------------------------
    START
 ------------------------------ */
 
 function start(){
+    unlockAudio(); // 호출
 
     requestNotificationPermission();
 
     if(timer) return;
 
     timer = setInterval(tick,1000);
-
 }
 
 
@@ -137,11 +149,14 @@ function mode(workMin,breakMin){
 
 function finishSession(){
 
-    // 알림음
+    // 🔊 알람음
     alarmSound.currentTime = 0;
-    alarmSound.play();
 
-    // Notification
+    alarmSound.play().catch(err => {
+        console.log("audio blocked:", err);
+    });
+
+    // 📢 알림
     if(isWork){
 
         sendNotification(
@@ -158,13 +173,12 @@ function finishSession(){
 
     }
 
-    // Focus ↔ Break 전환
+    // 🔄 상태 전환
     isWork = !isWork;
 
     sec = isWork ? workSec : breakSec;
 
     updateDisplay();
-
 }
 
 
