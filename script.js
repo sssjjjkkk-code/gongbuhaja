@@ -2,7 +2,7 @@
    POMODORO TIMER
 ------------------------------ */
 
-const alarmSound = new Audio("sounds/alarm.mp3");
+const alarmSound = new Audio("alarm.mp3");
 
 let audio = new Audio();
 audio.volume = 1;
@@ -243,7 +243,7 @@ function sound(name,btn){
 
     btn.classList.add("active");
 
-    audio.src = `sounds/${name}.mp3`;
+    audio.src = `${name}.mp3`;
 
     audio.loop = true;
 
