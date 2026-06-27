@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>🍅 Pomodoro</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div id="timer">25:00</div>
+
+        <div id="status">Focus Time</div>
+
+        <div class="modes">
+            <button onclick="mode(25,5)">25 / 5</button>
+            <button onclick="mode(50,10)">50 / 10</button>
+        </div>
+
+        <div class="controls">
+            <button onclick="start()">Start</button>
+            <button onclick="pause()">Pause</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+
+        <div class="sounds">
+            <button onclick="sound('rain',this)">Rain</button>
+            <button onclick="sound('library',this)">Library</button>
+            <button onclick="sound('airplane',this)">Airplane</button>
+            <button onclick="sound('fire',this)">Fire</button>
+        </div>
+
+        <input
+            id="volume"
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+            oninput="audio.volume=this.value">
+
+        <footer>
+            Made with the assistance of ChatGPT · Sound effects from Pixabay.
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
